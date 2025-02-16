@@ -3,14 +3,14 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
-from flask_cors import CORS  # ✅ Import CORS
+from flask_cors import CORS  
 
 app = Flask(__name__)
-CORS(app)  # ✅ Enable CORS for all routes
+CORS(app)  # ✅ Enable CORS
 
 def check_ipo_status(app_no):
     options = webdriver.FirefoxOptions()
-    options.add_argument("--headless")  
+    options.add_argument("--headless")  # ✅ Headless mode for Render
 
     service = Service(GeckoDriverManager().install())  
     driver = webdriver.Firefox(service=service, options=options)
