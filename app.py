@@ -3,25 +3,24 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
+from flask_cors import CORS  # ✅ Import CORS
 
 app = Flask(__name__)
+CORS(app)  # ✅ Enable CORS for all routes
 
 def check_ipo_status(app_no):
     options = webdriver.FirefoxOptions()
-    options.add_argument("--headless")  # Run without UI
+    options.add_argument("--headless")  
 
     service = Service(GeckoDriverManager().install())  
     driver = webdriver.Firefox(service=service, options=options)
 
     try:
         driver.get("https://www.linkintime.co.in/IPO/public-issues.html")
-
-        # Enter Application Number (Modify field name if needed)
         search_box = driver.find_element(By.NAME, "appNo")  
         search_box.send_keys(app_no)
         search_box.submit()
 
-        # Wait and extract result
         driver.implicitly_wait(5)
         result = driver.find_element(By.CLASS_NAME, "result").text  
 
