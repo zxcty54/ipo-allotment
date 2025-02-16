@@ -1,4 +1,5 @@
 Flask
-selenium
-gunicorn
 Flask-CORS
+selenium
+webdriver-manager
+gunicorn
