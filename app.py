@@ -10,9 +10,9 @@ firefox_path = "/usr/local/firefox/firefox"
 options = Options()
 options.binary_location = firefox_path
 
-# Start WebDriver
-service = Service("/usr/local/bin/geckodriver")  # ✅ This uses the manually installed GeckoDriver
-
+# Start WebDriver with the correct service
+service = Service(gecko_path)
+driver = webdriver.Firefox(service=service, options=options)  # ✅ Proper initialization
 
 # Open a test page
 driver.get("https://www.google.com")
