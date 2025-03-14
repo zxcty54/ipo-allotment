@@ -1,5 +1,5 @@
-Flask
-Flask-CORS
-selenium
-webdriver-manager
+flask
+yfinance
+gunicorn
+flask-cors
 gunicorn
